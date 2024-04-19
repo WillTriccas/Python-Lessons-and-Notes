@@ -1,0 +1,49 @@
+{
+	"folders": [
+		{
+			"path": "The Basics"
+		},
+		{
+			"path": "Workings for exercises"
+		},
+		{
+			"path": "Operations with data types"
+		},
+		{
+			"path": "User Input"
+		},
+		{
+			"path": "Loops"
+		},
+		{
+			"path": "Working through the problem"
+		},
+		{
+			"path": "File Processing"
+		},
+		{
+			"path": "Folder for text files"
+		},
+		{
+			"path": "Modules"
+		},
+		{
+			"path": "..\\Projects\\Interactive Dictionary"
+		},
+		{
+			"path": "..\\Projects\\Querying data from mySQL"
+		},
+		{
+			"path": "Working with CSV, JSON and Excel files"
+		},
+		{
+			"path": "Numerical and Scientific computing with Python and Numpy"
+		},
+		{
+			"path": "..\\Projects\\Volcano and Population web app"
+		},
+		{
+			"path": "..\\Projects\\Websites"
+		}
+	]
+}
