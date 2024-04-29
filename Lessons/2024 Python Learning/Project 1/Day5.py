@@ -38,3 +38,4 @@ print("Thank you for using this to do list program!")
 # after just adding the above changes, we have a fair bit of white space which we cant currently remove but it looks bad. To get rid of that, we can use f strings
 # f strings, as above, are a way to control strings and their spaces more effectively
 # specifying minus indicies, works backwards on the list. Eg, -1 index is the last item
+# enumerate function actually creates an enumerate object. If you want to turn this into a list you have to do list(enumerate_object)
