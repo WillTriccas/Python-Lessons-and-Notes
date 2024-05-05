@@ -64,3 +64,4 @@ print("Thank you for using this to do list program!")
 # Use List comprehensions over for loops where possible because it uses less code
 # the open method is defaulted to r, so you dont need to include the r when reading a file, although it is good practice.
 # Using the with context manager automatically closes the document at the end of the loop
+# TIP - if you want to get all the text as a single string use 'read()', if you want to get separate strings for each line use 'readlines()'
