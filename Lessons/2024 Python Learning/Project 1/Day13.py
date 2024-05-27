@@ -1,20 +1,22 @@
-# Functions can have inputs (parameters/arguments) but we have not created the functions with arguments yet. That is going to change now
-# In the function definition, the input is called a parameter, when the function is called in the script, you put it with an ARGUMENT
-# Take the function below, at the moment, the filename is hardcoded, so what we want to do is change that so a parameter dictates the name of the file
+# Sometimes when we should assign a default argument to the functions we make. 
+# That means we dont have to assign an argument every time we call the function 
+# BUT, if we want something other than the default argument ,we can put this in the function call and it will overwrite the default argument
+# You can also describe what a function does as a 'doc-string', this is written in the first line of the function definition
+# The doc string is revealed when someone uses the 'help' function on your function
+# Especially useful when you have different python scripts talking to eachother and want clarity on what functions do
 
-"""def get_todos():
-    with open("../files/todos.txt",'r') as file_local: 
-            todos_local = file_local.readlines()
-    return todos_local"""
-
-def get_todos(filepath):
+def get_todos(filepath="../files/todos.txt"):   #this is the default argument being defined here
+    """ Read a text file and return the         
+    list of to-do items.
+    """
     with open(filepath,'r') as file_local: 
             todos_local = file_local.readlines()
     return todos_local
 
-def write_todos(filepath, todos_arg):
+def write_todos(todos_arg, filepath="../files/todos.txt"): # Non-default args cant follow default args so need to re-adjust
+    """ Write the to-do items list in the text file  """
     with open(filepath, 'w') as file_local:
-        file_local.writelines(todos_arg)  # we dont return anything here because we dont output anything with this function. This function just behaves as a procedure
+        file_local.writelines(todos_arg)  
 
 
 prompt = """Please type add, show, edit, complete or exit.
@@ -28,19 +30,19 @@ while True:
     if  user_action.startswith("add"):
         todo = user_action[4:] 
 
-        todos = get_todos("../files/todos.txt")  # This is the function call for opening the file in read mode
+        todos = get_todos()  
 
         if not todo.endswith('\n'):
             todo += '\n'
 
         todos.append(todo)
 
-        write_todos("../files/todos.txt",todos)  # The write block is now this function 
+        write_todos(todos)  
         
     elif user_action.startswith("show" or "display"): 
 
-        todos = get_todos("../files/todos.txt") # have to write the exact path to get to the file in the function call as the argument (this is maybe not a good example of using parameters in functions as it is easier to leave it how it was)
-        
+        todos = get_todos() 
+
         new_todos = []
 
         new_todos = [item.strip('\n') for item in todos]    
@@ -53,14 +55,14 @@ while True:
     elif user_action.startswith("edit"):
         
         try:
-            todos = get_todos("../files/todos.txt")
+            todos = get_todos()
             
             number = int(user_action[5:])
             number = number - 1
             new_to_do = input("Enter the new to do: ")
             todos[number] = new_to_do + '\n'
 
-            write_todos("../files/todos.txt", todos)
+            write_todos(todos)
 
         except ValueError:                  
             print("That command was not valid, please enter the number of the todo you want to edit")
@@ -68,12 +70,12 @@ while True:
     
     elif "complete" in user_action:
         try:
-            todos = get_todos(filepath="../files/todos.txt") #you can explicitly reference the argument in the function when you call it BUT you dont have to, this is normally just for ease of reading code
+            todos = get_todos() 
             
             number = int(user_action[9:])
             item_removed = todos[number-1].strip('\n') 
             todos.pop(number-1)
-            write_todos("../files/todos.txt", todos)
+            write_todos(todos)
             print(f"You have successfully removed {item_removed}")
 
         except IndexError: 
